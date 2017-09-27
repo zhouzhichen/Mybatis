@@ -20,6 +20,6 @@
 	</environments>
 	<!--加载关系映射文件  -->
 	<mappers>
-		<mapper resource="userDao/UserDaoMapper.xml" />
+		<mapper resource="userDao/UserDaoMapper.xml" /><!--指明文件路径用/,指明Java类用.  -->
 	</mappers>
 </configuration>
