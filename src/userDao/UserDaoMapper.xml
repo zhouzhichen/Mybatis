@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<!-- 指定对应的接口 -->
+<mapper namespace="userDao.UserDao">
+	<!-- 配置javaBean与查询结果的对应关系 -->
+	<resultMap type="UserBean" id="zzc"><!--UserBean为conflig的别名，id自定 -->
+		<id property="id" column="user_id" /><!--将数据库和bean建立一一对应关联 -->
+		<result property="name" column="user_name" />
+		<result property="password" column="user_password" />
+	</resultMap>
+	<select id="userInfo" resultMap="zzc"><!--resultMap="zzc" 表示有返回值 -->
+		select * from user
+	</select>
+	<insert id="saveUser" parameterType="Userbean"><!--parameterType 表示传入参数类型 -->
+		insert into user
+		value(#{id},#{name},#{password})<!--注意取值方式！！！和el表达式的区别 -->
+	</insert>
+	<delete id="delUser" parameterType="int">
+		delete from user where user_id =
+		#{id}<!-- 这里的#{id}为什么可以这样得到？-->
+	</delete>
+	<update id="updateUser" parameterType="UserBean">
+		update user set
+		user_name=#{name},user_password=#{password} where user_id=#{id}
+	</update>
+</mapper>

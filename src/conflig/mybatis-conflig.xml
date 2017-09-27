@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+<configuration>
+	<typeAliases><!-- 类型别名，两种写法，第二种更常用 -->
+		<!-- <typeAlias type="原名(包名加类名)" alias="别名"/> -->
+		<package name="userBean" /><!-- 直接写包名，得到的别名是里面的类名 -->
+	</typeAliases>
+	<!-- 连接数据库的参数 -->
+	<environments default="development">
+		<environment id="development"><!-- 和上面的default的值必须一样 -->
+			<transactionManager type="JDBC"></transactionManager>
+			<!--连接数据的参数 -->
+			<dataSource type="POOLED"><!-- -->
+				<property name="username" value="root" />
+				<property name="password" value="1234" />
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/test2" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!--加载关系映射文件  -->
+	<mappers>
+		<mapper resource="userDao/UserDaoMapper.xml" />
+	</mappers>
+</configuration>
